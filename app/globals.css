@@ -2,26 +2,43 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+h1 {
+  @apply text-4xl;
+  @apply font-bold;
+  @apply text-gray-900;
+  @apply mb-4;
+  @apply font-['Dongle']
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+h2 {
+  @apply text-2xl;
+  @apply font-bold;
+  @apply text-gray-900;
+  @apply mb-4;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+h3 {
+  @apply text-xl;
+  @apply font-bold;
+  @apply text-gray-900;
+  @apply mb-4;
+}
+
+ul {
+  @apply list-disc;
+  @apply ml-4;
+}
+
+li {
+  @apply mb-2;
+}
+
+p a {
+  @apply text-blue-500;
+  @apply hover:text-blue-700;
+  @apply underline;
+}
+
+p {
+  @apply mb-4;
 }

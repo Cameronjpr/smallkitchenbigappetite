@@ -1,8 +1,7 @@
+import clsx from 'clsx'
+import { dongle, inter } from './fonts'
 import './globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -16,7 +15,16 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <nav className={clsx(dongle.className, 'p-4 bg-green-900')}>
+          <a className="text-4xl text-green-50 no-underline" href="/">
+            Small Kitchen, Big Appetite
+          </a>
+        </nav>
+        <main className="flex min-h-screen flex-col p-4 max-w-xl m-auto">
+          {children}
+        </main>
+      </body>
     </html>
   )
 }
