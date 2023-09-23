@@ -6,7 +6,17 @@ const hygraph = new GraphQLClient(
 )
 
 async function getPosts() {
-  const { posts } = await hygraph.request(QUERY)
+  const { posts } = (await hygraph.request(QUERY)) as {
+    posts: {
+      id: string
+      title: string
+      slug: string
+      coverImage: {
+        url: string
+        altText: string
+      }
+    }[]
+  }
 
   return posts
 }
