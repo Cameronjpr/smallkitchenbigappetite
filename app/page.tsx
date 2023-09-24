@@ -38,10 +38,11 @@ export default async function Home() {
 
 const QUERY = gql`
   {
-    posts {
+    posts(orderBy: date_DESC) {
       id
       title
       slug
+      date
       tags
       excerpt
       coverImage {

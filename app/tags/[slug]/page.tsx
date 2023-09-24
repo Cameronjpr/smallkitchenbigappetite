@@ -11,9 +11,10 @@ async function getPosts(tag: string) {
   const { posts } = (await hygraph.request(
     `
     query BlogPostQuery() {
-     posts(where: {tags_contains_some: ${tag}}) {
+     posts(orderBy: date_DESC, where: {tags_contains_some: ${tag}}) {
         id
         title
+        date
         slug
         excerpt
         coverImage {
