@@ -5,4 +5,4 @@ export const inter = Inter({
   display: 'swap',
 })
  
-export const dongle = Dongle({subsets: ['latin'], weight: "400"})
+export const dongle = Dongle({subsets: ['latin'], weight: "400", display: 'swap'})

@@ -1,5 +1,5 @@
 import { RichText } from '@graphcms/rich-text-react-renderer'
-import { GraphQLClient, gql } from 'graphql-request'
+import { GraphQLClient } from 'graphql-request'
 import Image from 'next/image'
 
 const hygraph = new GraphQLClient(
@@ -12,6 +12,7 @@ async function getPosts(slug: string) {
     query BlogPostQuery($slug: String!) {
       post(where: { slug: $slug }) {
         title
+        tags
         content {
           json
         }
@@ -33,6 +34,7 @@ async function getPosts(slug: string) {
         url: string
         altText: string
       }
+      tags: string[]
     }
   }
 
@@ -44,15 +46,25 @@ export default async function Post({ params }: { params: { slug: string } }) {
 
   return (
     <article className="flex flex-col gap-8">
-      <section className="m-auto w-full flex items-center justify-center">
+      <section className="m-auto w-full flex flex-col gap-4">
         <Image
           className="rounded-lg"
           src={post.coverImage.url}
-          width="500"
-          height="500"
+          width="700"
+          height="700"
           objectFit="contain"
           alt={post.coverImage.altText}
         />
+        <ul className="list-none flex gap-2 w-full m-0">
+          {post.tags.map((tag: string) => (
+            <li
+              className="text-green-900 border-2 border-green-700 hover:border-green-600 rounded-md px-2 py-1 leading-tight"
+              key={tag}
+            >
+              <a href={`/tags/${tag}`}>{tag}</a>
+            </li>
+          ))}
+        </ul>
       </section>
       <h1 className="text-center sm:text-left">{post.title}</h1>
       <main>
