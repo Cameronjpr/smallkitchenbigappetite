@@ -1,7 +1,7 @@
 import { PostSummary } from '@/components/PostSummary'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { GraphQLClient, gql } from 'graphql-request'
-import Image from 'next/image'
+
 const hygraph = new GraphQLClient(
   'https://api-eu-west-2.hygraph.com/v2/clmwdmvpt158s01t2fiizhok7/master'
 )
