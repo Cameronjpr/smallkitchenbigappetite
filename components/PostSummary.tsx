@@ -1,6 +1,7 @@
 import { Post } from '@/lib/types'
 import { Card, CardHeader, CardContent, CardTitle } from './ui/card'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export function PostSummary(props: { post: Post }) {
   const { post } = props
@@ -25,7 +26,7 @@ export function PostSummary(props: { post: Post }) {
                 className="text-green-900 border-2 border-green-700 hover:border-green-600 rounded-md px-2 py-1 leading-tight"
                 key={tag}
               >
-                <a href={`/tags/${tag}`}>{tag}</a>
+                <Link href={`/tags/${tag}`}>{tag}</Link>
               </li>
             ))}
           </ul>

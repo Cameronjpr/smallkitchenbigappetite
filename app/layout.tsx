@@ -2,6 +2,7 @@ import clsx from 'clsx'
 import { dongle, inter } from './fonts'
 import './globals.css'
 import type { Metadata } from 'next'
+import Link from 'next/link'
 
 export const metadata: Metadata = {
   title: 'Small Kitchen, Big Appetite',
@@ -16,13 +17,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className={clsx(dongle.className, 'p-4 bg-green-900')}>
-          <a
-            className="text-4xl leading-none text-green-50 no-underline"
+        <nav
+          className={clsx(dongle.className, 'p-4 border-b-2 border-green-900')}
+        >
+          <Link
+            className="text-4xl leading-none text-green-900 no-underline"
             href="/"
           >
             Small Kitchen, Big Appetite
-          </a>
+          </Link>
         </nav>
         <main className="flex min-h-screen flex-col p-4 max-w-xl m-auto">
           {children}

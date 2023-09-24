@@ -1,6 +1,7 @@
 import { RichText } from '@graphcms/rich-text-react-renderer'
 import { GraphQLClient } from 'graphql-request'
 import Image from 'next/image'
+import Link from 'next/link'
 
 const hygraph = new GraphQLClient(
   'https://api-eu-west-2.hygraph.com/v2/clmwdmvpt158s01t2fiizhok7/master'
@@ -61,7 +62,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
               className="text-green-900 border-2 border-green-700 hover:border-green-600 rounded-md px-2 py-1 leading-tight"
               key={tag}
             >
-              <a href={`/tags/${tag}`}>{tag}</a>
+              <Link href={`/tags/${tag}`}>{tag}</Link>
             </li>
           ))}
         </ul>
