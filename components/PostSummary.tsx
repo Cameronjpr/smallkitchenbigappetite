@@ -13,6 +13,7 @@ export async function PostSummary(props: { post: Post }) {
       <Link href={`/posts/${post.slug}`}>
         <CardHeader className="p-0 w-full">
           <Image
+            quality={90}
             className="rounded-t-lg object-cover h-56 sm:h-72 w-full"
             src={`https://media.graphassets.com/resize=width:${544}/${post.coverImage.url
               .split('/')
@@ -37,20 +38,16 @@ export async function PostSummary(props: { post: Post }) {
         </Link>
         <p className="text-stone-700">{post.excerpt}</p>
         <ul className="list-none flex gap-2 m-0">
-          {post.tags?.map((tag: string) => {
-            console.log(tag)
-
-            return (
-              <li
-                key={`${post.id}-${tag}`}
-                className="text-xs m-0 transition-colors text-amber-900 hover:text-amber-800 hover:bg-amber-100 border-[1px] border-amber-700 hover:border-amber-600 rounded-md px-2 py-1 leading-tight"
-              >
-                <Link href={`/tags/${tag}`}>
-                  <span>{tag}</span>
-                </Link>
-              </li>
-            )
-          })}
+          {post.tags?.map((tag: string) => (
+            <li
+              key={`${post.id}-${tag}`}
+              className="text-xs m-0 transition-colors text-amber-900 hover:text-amber-800 hover:bg-amber-100 border-[1px] border-amber-700 hover:border-amber-600 rounded-md px-2 py-1 leading-tight"
+            >
+              <Link href={`/tags/${tag}`}>
+                <span>{tag}</span>
+              </Link>
+            </li>
+          ))}
         </ul>
       </CardContent>
     </Card>
