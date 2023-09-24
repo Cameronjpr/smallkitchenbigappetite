@@ -33,9 +33,6 @@ export default function RootLayout({
           <Link href="https://instagram.com/smallkitchen.bigappetite">
             <Icon name="instagram" tint="white" />
           </Link>
-          <p className="text-center text-xs">
-            &copy; {new Date().getFullYear()} Small Kitchen, Big Appetite
-          </p>
         </footer>
       </body>
     </html>

@@ -49,10 +49,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
     <article className="flex flex-col gap-8">
       <section className="m-auto w-full flex flex-col gap-4">
         <Image
-          className="rounded-lg"
+          className="rounded-lg h-72 object-cover"
           src={post.coverImage.url}
-          width="700"
-          height="700"
+          width="544"
+          height="300"
           objectFit="contain"
           alt={post.coverImage.altText}
         />

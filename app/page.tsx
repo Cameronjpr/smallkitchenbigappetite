@@ -30,7 +30,7 @@ export default async function Home() {
   return (
     <section className="flex flex-col gap-8">
       {posts.map((post) => (
-        <PostSummary key={post.id} post={post} />
+        <PostSummary key={post.slug} post={post} />
       ))}
     </section>
   )
