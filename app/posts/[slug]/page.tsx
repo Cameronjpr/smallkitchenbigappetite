@@ -49,11 +49,14 @@ export default async function Post({ params }: { params: { slug: string } }) {
     <article className="flex flex-col gap-8">
       <section className="m-auto w-full flex flex-col gap-4">
         <Image
-          className="rounded-lg h-72 object-cover"
-          src={post.coverImage.url}
-          width="544"
-          height="300"
-          objectFit="contain"
+          quality={90}
+          className="rounded-t-lg object-cover h-56 sm:h-72 w-full"
+          src={`https://media.graphassets.com/resize=width:${544}/${post.coverImage.url
+            .split('/')
+            .pop()}`}
+          width="500"
+          height="288"
+          sizes="(max-width: 768px) 544px, 320px"
           alt={post.coverImage.altText}
         />
         <ul className="list-none flex gap-2 m-0">
