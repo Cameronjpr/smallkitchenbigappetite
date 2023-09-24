@@ -27,7 +27,6 @@ async function getPosts() {
 export default async function Home() {
   const posts = await getPosts()
 
-  console.log(posts)
   return (
     <section className="flex flex-col gap-8">
       {posts.map((post) => (
