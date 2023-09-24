@@ -9,7 +9,7 @@ export function PostSummary(props: { post: Post }) {
   const { post } = props
   return (
     <a href={`/posts/${post.slug}`} key={post.id}>
-      <Card className="flex flex-col gap-4 bg-amber-50 border-stone-400">
+      <Card className="transition-colors flex flex-col gap-4 bg-amber-50 border-stone-400 hover:border-stone-600 hover:bg-amber-100">
         <CardHeader className="p-0 w-full">
           <Image
             className="rounded-t-lg object-cover h-56 sm:h-72 w-full"

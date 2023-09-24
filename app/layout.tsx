@@ -3,6 +3,7 @@ import { dongle, inter } from './fonts'
 import './globals.css'
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { Icon } from '@/components/ui/icon'
 
 export const metadata: Metadata = {
   title: 'Small Kitchen, Big Appetite',
@@ -18,13 +19,24 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <nav className={clsx(dongle.className, 'p-4 text-center')}>
-          <Link className="text-5xl leading-none text-lime-700" href="/">
+          <Link
+            className="text-4xl sm:text-5xl leading-none text-lime-700"
+            href="/"
+          >
             Small Kitchen, Big Appetite
           </Link>
         </nav>
-        <main className="pt-12 sm:pt-24 flex min-h-screen flex-col p-4 max-w-xl m-auto">
+        <main className="py-12 sm:pt-24 flex min-h-screen flex-col p-4 max-w-xl m-auto">
           {children}
         </main>
+        <footer className="flex flex-col items-center justify-center gap-4 pt-8 pb-4 bg-lime-800 text-lime-50">
+          <Link href="https://instagram.com/smallkitchen.bigappetite">
+            <Icon name="instagram" tint="white" />
+          </Link>
+          <p className="text-center text-xs">
+            &copy; {new Date().getFullYear()} Small Kitchen, Big Appetite
+          </p>
+        </footer>
       </body>
     </html>
   )
