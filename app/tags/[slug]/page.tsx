@@ -51,7 +51,7 @@ export default async function TagPage({
   return (
     <section className="flex flex-col gap-8">
       <h1>
-        Posts tagged with <span className="text-green-700">{params.slug}</span>
+        Posts tagged with <span className="text-lime-700">{params.slug}</span>
       </h1>
       {posts.map((post) => (
         <PostSummary key={post.id} post={post} />

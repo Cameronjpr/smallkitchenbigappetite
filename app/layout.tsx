@@ -17,17 +17,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav
-          className={clsx(dongle.className, 'p-4 border-b-2 border-green-900')}
-        >
-          <Link
-            className="text-4xl leading-none text-green-900 no-underline"
-            href="/"
-          >
+        <nav className={clsx(dongle.className, 'p-4 text-center')}>
+          <Link className="text-5xl leading-none text-lime-700" href="/">
             Small Kitchen, Big Appetite
           </Link>
         </nav>
-        <main className="flex min-h-screen flex-col p-4 max-w-xl m-auto">
+        <main className="pt-12 sm:pt-24 flex min-h-screen flex-col p-4 max-w-xl m-auto">
           {children}
         </main>
       </body>

@@ -56,10 +56,10 @@ export default async function Post({ params }: { params: { slug: string } }) {
           objectFit="contain"
           alt={post.coverImage.altText}
         />
-        <ul className="list-none flex gap-2 w-full m-0">
-          {post.tags.map((tag: string) => (
+        <ul className="list-none flex gap-2 m-0">
+          {post?.tags?.map((tag: string) => (
             <li
-              className="text-green-900 border-2 border-green-700 hover:border-green-600 rounded-md px-2 py-1 leading-tight"
+              className="transition-colors text-amber-900 hover:text-amber-800 hover:bg-amber-100 border-2 border-amber-700 hover:border-amber-600 rounded-md px-2 py-1 leading-tight"
               key={tag}
             >
               <Link href={`/tags/${tag}`}>{tag}</Link>
