@@ -11,7 +11,7 @@ export async function RecipeSummary(props: { recipe: Recipe }) {
 
   return (
     <Card className="transition-colors flex flex-col gap-4 border-stone-400 hover:border-stone-600 bg-amber-100">
-      <Link href={`/posts/${recipe.slug}`}>
+      <Link href={`/recipes/${recipe.slug}`}>
         <CardHeader className="p-0 w-full">
           <Image
             quality={90}
