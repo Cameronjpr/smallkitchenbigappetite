@@ -27,16 +27,7 @@ async function getPosts(tag: string) {
     }
   `
   )) as {
-    posts: {
-      id: string
-      title: string
-      slug: string
-      excerpt: string
-      coverImage: {
-        url: string
-        altText: string
-      }
-    }[]
+    posts: Post[]
   }
 
   return posts

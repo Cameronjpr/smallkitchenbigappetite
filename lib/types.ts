@@ -5,6 +5,9 @@ export type Post = {
   date?: string
   createdAt: string
   excerpt?: string
+  content?: {
+    json: any
+  }
   coverImage: {
     url: string
     altText: string

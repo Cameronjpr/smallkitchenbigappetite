@@ -1,3 +1,4 @@
+import { Post } from '@/lib/types'
 import { RichText } from '@graphcms/rich-text-react-renderer'
 import { GraphQLClient } from 'graphql-request'
 import Image from 'next/image'
@@ -28,15 +29,7 @@ async function getPosts(slug: string) {
       slug,
     }
   )) as {
-    post: {
-      title: string
-      content: { json: any }
-      coverImage: {
-        url: string
-        altText: string
-      }
-      tags: string[]
-    }
+    post: Post
   }
 
   return post

@@ -1,6 +1,5 @@
 import { RecipePrepBox } from '@/components/RecipePrepBox'
 import { Checkbox } from '@/components/ui/checkbox'
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { Recipe } from '@/lib/types'
 import { GraphQLClient } from 'graphql-request'
 import Image from 'next/image'

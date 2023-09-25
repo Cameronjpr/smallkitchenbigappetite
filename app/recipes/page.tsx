@@ -1,9 +1,6 @@
 import { RecipeSummary } from '@/components/RecipeSummary'
 import { Recipe } from '@/lib/types'
-import { RichText } from '@graphcms/rich-text-react-renderer'
 import { GraphQLClient } from 'graphql-request'
-import Image from 'next/image'
-import Link from 'next/link'
 
 const hygraph = new GraphQLClient(
   'https://api-eu-west-2.hygraph.com/v2/clmwdmvpt158s01t2fiizhok7/master'
