@@ -29,9 +29,13 @@ export default function RootLayout({
         <main className="py-12 sm:pt-24 flex min-h-screen flex-col p-4 max-w-xl m-auto">
           {children}
         </main>
-        <footer className="flex flex-col items-center justify-center gap-4 pt-8 pb-4 bg-lime-800 text-lime-50">
+        <footer className="flex flex-col items-center justify-center gap-4 pb-8 pt-6 border-t-2 border-lime-600 border-dotted">
+          <section className="flex gap-4 justify-between">
+            <Link href="/">Posts</Link>
+            <Link href="/recipes">Recipes</Link>
+          </section>
           <Link href="https://instagram.com/smallkitchen.bigappetite">
-            <Icon name="instagram" tint="white" />
+            <Icon name="instagram" />
           </Link>
         </footer>
       </body>

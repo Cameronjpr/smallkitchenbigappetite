@@ -1,6 +1,8 @@
+import { dongle } from '@/app/fonts'
 import { PostSummary } from '@/components/PostSummary'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Post } from '@/lib/types'
+import clsx from 'clsx'
 import { GraphQLClient, gql } from 'graphql-request'
 import Image from 'next/image'
 const hygraph = new GraphQLClient(
@@ -50,8 +52,8 @@ export default async function TagPage({
   console.log(posts)
   return (
     <section className="flex flex-col gap-8">
-      <h1>
-        Posts tagged with <span className="text-lime-700">{params.slug}</span>
+      <h1 className={clsx(dongle.className, ' text-lime-700')}>
+        {params.slug}
       </h1>
       {posts.map((post) => (
         <PostSummary key={post.id} post={post} />

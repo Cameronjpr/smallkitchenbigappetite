@@ -10,3 +10,21 @@ export type Post = {
   }
   tags?: string[]
 }
+
+export type Recipe = {
+  id: string
+  title: string
+  preamble?: string
+  slug: string
+  date?: string
+  coverImage: {
+    url: string
+    altText: string
+  }
+  tags?: string[]
+  ingredients?: string
+  equipment?: string
+  method?: {
+    description: string
+  }[]
+}

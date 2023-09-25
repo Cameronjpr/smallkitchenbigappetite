@@ -1,5 +1,6 @@
 import { PostSummary } from '@/components/PostSummary'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { Post } from '@/lib/types'
 import { GraphQLClient, gql } from 'graphql-request'
 
 const hygraph = new GraphQLClient(
@@ -8,17 +9,7 @@ const hygraph = new GraphQLClient(
 
 async function getPosts() {
   const { posts } = (await hygraph.request(QUERY)) as {
-    posts: {
-      id: string
-      title: string
-      slug: string
-      tags: string[]
-      excerpt: string
-      coverImage: {
-        url: string
-        altText: string
-      }
-    }[]
+    posts: Post[]
   }
 
   return posts
