@@ -69,7 +69,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
         <RichText content={recipe?.preamble?.raw} />
       </section>
       <RecipePrepBox recipe={recipe} />
-      <section>
+      <section className="pt-8">
         <h2 className="text-center sm:text-left">Method</h2>
         <ol className="mx-1 py-8 flex flex-col gap-8">
           {recipe?.method?.map(
