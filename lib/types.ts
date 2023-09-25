@@ -18,7 +18,12 @@ export type Post = {
 export type Recipe = {
   id: string
   title: string
-  preamble?: string
+  preamble?: {
+    raw: any
+  }
+  epilogue?: {
+    raw: any
+  }
   slug: string
   date?: string
   createdAt: string

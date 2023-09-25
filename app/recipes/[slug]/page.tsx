@@ -1,6 +1,7 @@
 import { RecipePrepBox } from '@/components/RecipePrepBox'
 import { Checkbox } from '@/components/ui/checkbox'
 import { Recipe } from '@/lib/types'
+import { RichText } from '@graphcms/rich-text-react-renderer'
 import { GraphQLClient } from 'graphql-request'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -16,7 +17,12 @@ async function getRecipe(slug: string) {
       recipe(where: { slug: $slug }) {
         id 
         title
-        preamble
+        preamble {
+          raw
+        }
+        epilogue {
+          raw
+        }
         slug
         ingredients
         equipment
@@ -58,21 +64,29 @@ export default async function Post({ params }: { params: { slug: string } }) {
         />
 
         <h1 className="text-center sm:text-left">{recipe.title}</h1>
-        <p>{recipe.preamble}</p>
-        <RecipePrepBox recipe={recipe} />
-        <section>
-          <h2 className="text-center sm:text-left">Method</h2>
-          <ol className="mx-1 py-8 flex flex-col gap-8">
-            {recipe?.method?.map(
-              ({ description }: { description: string }, i) => (
-                <li className="grid grid-cols-12 items-start" key={description}>
-                  <Checkbox className="col-start-1 col-span-2 rounded-full w-8 h-8 mt-1" />
-                  <p className="m-0 col-start-3 col-span-11">{description}</p>
-                </li>
-              )
-            )}
-          </ol>
-        </section>
+      </section>
+      <section>
+        <RichText content={recipe?.preamble?.raw} />
+      </section>
+      <RecipePrepBox recipe={recipe} />
+      <section>
+        <h2 className="text-center sm:text-left">Method</h2>
+        <ol className="mx-1 py-8 flex flex-col gap-8">
+          {recipe?.method?.map(
+            ({ description }: { description: string }, i) => (
+              <li className="grid grid-cols-12 items-start" key={description}>
+                <Checkbox className="col-start-1 col-span-1 rounded-full w-6 h-6 mt-1" />
+                <p className="pl-2 m-0 col-start-2 col-span-11">
+                  {description}
+                </p>
+              </li>
+            )
+          )}
+        </ol>
+        <RichText content={recipe?.epilogue?.raw} />
+      </section>
+      <section className="flex flex-col gap-2">
+        <h3>Tagged with:</h3>
         <ul className="list-none flex gap-2 m-0 pb-4">
           {recipe.tags?.map((tag: string) => (
             <Link href={`/tags/${tag}`} key={`${recipe.id}-${tag}`}>
