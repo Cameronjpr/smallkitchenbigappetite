@@ -4,12 +4,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { dongle } from '@/app/fonts'
 import clsx from 'clsx'
+import { Badge } from './ui/badge'
 
 export async function RecipeSummary(props: { recipe: Recipe }) {
   const { recipe } = props
 
   return (
-    <Card className="transition-colors flex flex-col gap-4 bg-amber-50 border-stone-400 hover:border-stone-600 hover:bg-amber-100">
+    <Card className="transition-colors flex flex-col gap-4 border-stone-400 hover:border-stone-600 bg-amber-100">
       <Link href={`/posts/${recipe.slug}`}>
         <CardHeader className="p-0 w-full">
           <Image
@@ -36,7 +37,8 @@ export async function RecipeSummary(props: { recipe: Recipe }) {
             {recipe.title}
           </CardTitle>
         </Link>
-        <ul className="list-none flex gap-2 m-0">
+        <Badge>Recipe</Badge>
+        <ul className="list-none flex gap-2 m-0 pt-4">
           {recipe.tags?.map((tag: string) => (
             <Link href={`/tags/${tag}`} key={`${recipe.id}-${tag}`}>
               <li className="text-xs m-0 transition-colors text-amber-900 hover:text-amber-800 hover:bg-amber-100 border-[1px] border-amber-700 hover:border-amber-600 rounded-md px-2 py-1 leading-tight">

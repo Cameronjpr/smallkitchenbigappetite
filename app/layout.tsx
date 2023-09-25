@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <nav className={clsx(dongle.className, 'p-4 text-center')}>
+        <nav className={clsx(dongle.className, 'p-4 sm:p-8 text-center')}>
           <Link
             className="text-4xl sm:text-5xl leading-none text-lime-700"
             href="/"

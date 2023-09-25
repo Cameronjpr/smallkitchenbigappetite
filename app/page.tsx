@@ -1,28 +1,43 @@
 import { PostSummary } from '@/components/PostSummary'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { Post } from '@/lib/types'
+import { RecipeSummary } from '@/components/RecipeSummary'
+import { Post, Recipe } from '@/lib/types'
 import { GraphQLClient, gql } from 'graphql-request'
 
 const hygraph = new GraphQLClient(
   'https://api-eu-west-2.hygraph.com/v2/clmwdmvpt158s01t2fiizhok7/master'
 )
 
-async function getPosts() {
-  const { posts } = (await hygraph.request(QUERY)) as {
+async function getEntries() {
+  const { posts, recipes } = (await hygraph.request(QUERY)) as {
     posts: Post[]
+    recipes: Recipe[]
   }
 
-  return posts
+  const entries = [
+    ...posts.map((p) => ({ ...p, type: 'post' })),
+    ...recipes.map((r) => ({ ...r, type: 'recipe' })),
+  ].sort((a, b) => {
+    console.log(a, b)
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  })
+
+  return {
+    entries,
+  }
 }
 
 export default async function Home() {
-  const posts = await getPosts()
+  const { entries } = await getEntries()
 
   return (
     <section className="flex flex-col gap-8">
-      {posts.map((post) => (
-        <PostSummary key={post.slug} post={post} />
-      ))}
+      {entries.map((entry) =>
+        entry.type === 'recipe' ? (
+          <RecipeSummary key={entry.slug} recipe={entry} />
+        ) : (
+          <PostSummary key={entry.slug} post={entry} />
+        )
+      )}
     </section>
   )
 }
@@ -34,8 +49,20 @@ const QUERY = gql`
       title
       slug
       date
+      createdAt
       tags
       excerpt
+      coverImage {
+        url
+        altText
+      }
+    }
+    recipes {
+      id
+      title
+      slug
+      createdAt
+      tags
       coverImage {
         url
         altText

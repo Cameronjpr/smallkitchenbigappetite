@@ -3,6 +3,7 @@ export type Post = {
   title: string
   slug: string
   date?: string
+  createdAt: string
   excerpt?: string
   coverImage: {
     url: string
@@ -17,6 +18,7 @@ export type Recipe = {
   preamble?: string
   slug: string
   date?: string
+  createdAt: string
   coverImage: {
     url: string
     altText: string

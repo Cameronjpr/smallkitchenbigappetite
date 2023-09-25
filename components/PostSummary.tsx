@@ -4,12 +4,13 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { dongle } from '@/app/fonts'
 import clsx from 'clsx'
+import { Badge } from './ui/badge'
 
 export async function PostSummary(props: { post: Post }) {
   const { post } = props
 
   return (
-    <Card className="transition-colors flex flex-col gap-4 bg-amber-50 border-stone-400 hover:border-stone-600 hover:bg-amber-100">
+    <Card className="transition-colors flex flex-col gap-4 bg-amber-100 border-stone-400 hover:border-stone-600 ">
       <Link href={`/posts/${post.slug}`}>
         <CardHeader className="p-0 w-full">
           <Image
@@ -36,7 +37,8 @@ export async function PostSummary(props: { post: Post }) {
             {post.title}
           </CardTitle>
         </Link>
-        <p className="text-stone-700">{post.excerpt}</p>
+        <Badge>Post</Badge>
+        <p className="text-stone-700 pt-4">{post.excerpt}</p>
         <ul className="list-none flex gap-2 m-0">
           {post.tags?.map((tag: string) => (
             <Link href={`/tags/${tag}`} key={`${post.id}-${tag}`}>
