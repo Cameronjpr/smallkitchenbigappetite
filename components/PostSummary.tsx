@@ -10,8 +10,9 @@ export async function PostSummary(props: { post: Post }) {
   const { post } = props
 
   return (
-    <Card className="transition-colors flex flex-col gap-4 bg-amber-100 border-stone-400 hover:border-stone-600 ">
-      <Link href={`/posts/${post.slug}`}>
+    <Card className="transition-colors flex flex-col gap-2 border-stone-400 hover:border-stone-600 ">
+      {/* lol at this href solution */}
+      <Link href={`/${post.type}s/${post.slug}`}>
         <CardHeader className="p-0 w-full">
           <Image
             quality={90}
@@ -27,7 +28,7 @@ export async function PostSummary(props: { post: Post }) {
         </CardHeader>
       </Link>
       <CardContent>
-        <Link href={`/posts/${post.slug}`}>
+        <Link href={`/${post.type}s/${post.slug}`}>
           <CardTitle
             className={clsx(
               dongle.className,
@@ -37,7 +38,7 @@ export async function PostSummary(props: { post: Post }) {
             {post.title}
           </CardTitle>
         </Link>
-        <Badge>Post</Badge>
+        <Badge>{post.type === 'recipe' ? 'Recipe' : 'Post'}</Badge>
         <p className="text-stone-700 pt-4">{post.excerpt}</p>
         <ul className="list-none flex gap-2 m-0">
           {post.tags?.map((tag: string) => (

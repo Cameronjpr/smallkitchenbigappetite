@@ -1,5 +1,6 @@
 export type Post = {
   id: string
+  type: string
   title: string
   slug: string
   date?: string
@@ -17,6 +18,7 @@ export type Post = {
 
 export type Recipe = {
   id: string
+  type: string
   title: string
   preamble?: {
     raw: any

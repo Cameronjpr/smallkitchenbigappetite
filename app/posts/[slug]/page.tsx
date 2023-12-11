@@ -43,7 +43,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
       <section className="m-auto w-full flex flex-col gap-4">
         <Image
           quality={90}
-          className="rounded-t-lg object-cover h-56 sm:h-72 w-full"
+          className="rounded-lg object-cover h-56 sm:h-72 w-full"
           src={`https://media.graphassets.com/resize=width:${544}/${post.coverImage.url
             .split('/')
             .pop()}`}

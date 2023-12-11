@@ -1,4 +1,4 @@
-import { RecipeSummary } from '@/components/RecipeSummary'
+import { PostSummary } from '@/components/PostSummary'
 import { Recipe } from '@/lib/types'
 import { GraphQLClient } from 'graphql-request'
 
@@ -37,7 +37,7 @@ export default async function Post({ params }: { params: { slug: string } }) {
       {/* {JSON.stringify(recipes)} */}
       <section className="m-auto w-full flex flex-col gap-4">
         {recipes?.map((recipe) => (
-          <RecipeSummary key={recipe.slug} recipe={recipe} />
+          <PostSummary key={recipe.slug} post={{ ...recipe, type: 'recipe' }} />
         ))}
       </section>
     </article>

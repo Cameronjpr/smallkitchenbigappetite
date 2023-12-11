@@ -1,5 +1,4 @@
 import { PostSummary } from '@/components/PostSummary'
-import { RecipeSummary } from '@/components/RecipeSummary'
 import { Post, Recipe } from '@/lib/types'
 import { GraphQLClient, gql } from 'graphql-request'
 
@@ -17,7 +16,6 @@ async function getEntries() {
     ...posts.map((p) => ({ ...p, type: 'post' })),
     ...recipes.map((r) => ({ ...r, type: 'recipe' })),
   ].sort((a, b) => {
-    console.log(a, b)
     return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
   })
 
@@ -31,13 +29,9 @@ export default async function Home() {
 
   return (
     <section className="flex flex-col gap-8">
-      {entries.map((entry) =>
-        entry.type === 'recipe' ? (
-          <RecipeSummary key={entry.slug} recipe={entry} />
-        ) : (
-          <PostSummary key={entry.slug} post={entry} />
-        )
-      )}
+      {entries.map((entry) => (
+        <PostSummary key={entry.slug} post={entry} />
+      ))}
     </section>
   )
 }
